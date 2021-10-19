@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GameCardLib.Models.Lists
 {
-    class DeckManager<Deck> : ListManager<Deck>
+    public class DeckManager<Deck> : ListManager<Deck>
     {
-        DeckManager() : base()
+        public DeckManager() : base()
         {
 
         }

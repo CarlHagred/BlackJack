@@ -65,7 +65,13 @@ namespace GameCardLib.Models
         }
         public Player(string id, string name, Hand hand)
         {
+
         }
+
+        public Player()
+        {
+        }
+
         public string ToString()
         {
             return null;
