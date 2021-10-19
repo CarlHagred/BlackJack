@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameCardLib
+namespace GameCardLib.Models.Lists
 {
-    class Controller
+    class DeckManager<Deck> : ListManager<Deck>
     {
-        public void metod(){
-            
+        DeckManager() : base()
+        {
+
         }
     }
 }
