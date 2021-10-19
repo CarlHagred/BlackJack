@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameCardLib
+namespace GameCardLib.Models
 {
-    private Deck deck;
     public class Hand
     {
+        private Deck deck;
+
         public Card LastCard
         {
             get
@@ -45,12 +46,5 @@ namespace GameCardLib
         {
 
         }
-
-        public string ToString()
-        {
-
-        }
-
-
     }
 }
