@@ -29,20 +29,179 @@ namespace BlackJack
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtAmountOfDecks = new System.Windows.Forms.Label();
+            this.txtAmountOfPlayers = new System.Windows.Forms.Label();
+            this.txtDealerCards = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDealerScore = new System.Windows.Forms.Label();
+            this.txtCurrentPlayer = new System.Windows.Forms.Label();
+            this.txtCurrentPlayerScore = new System.Windows.Forms.Label();
+            this.txtSelectedPlayerCards = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // txtAmountOfDecks
+            // 
+            this.txtAmountOfDecks.AutoSize = true;
+            this.txtAmountOfDecks.Location = new System.Drawing.Point(39, 28);
+            this.txtAmountOfDecks.Name = "txtAmountOfDecks";
+            this.txtAmountOfDecks.Size = new System.Drawing.Size(50, 15);
+            this.txtAmountOfDecks.TabIndex = 0;
+            this.txtAmountOfDecks.Text = "Decks: 0";
+            // 
+            // txtAmountOfPlayers
+            // 
+            this.txtAmountOfPlayers.AutoSize = true;
+            this.txtAmountOfPlayers.Location = new System.Drawing.Point(39, 56);
+            this.txtAmountOfPlayers.Name = "txtAmountOfPlayers";
+            this.txtAmountOfPlayers.Size = new System.Drawing.Size(56, 15);
+            this.txtAmountOfPlayers.TabIndex = 1;
+            this.txtAmountOfPlayers.Text = "Players: 0";
+            // 
+            // txtDealerCards
+            // 
+            this.txtDealerCards.AutoSize = true;
+            this.txtDealerCards.Location = new System.Drawing.Point(39, 280);
+            this.txtDealerCards.Name = "txtDealerCards";
+            this.txtDealerCards.Size = new System.Drawing.Size(70, 15);
+            this.txtDealerCards.TabIndex = 2;
+            this.txtDealerCards.Text = "DealerCards";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(39, 615);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Dealer";
+            // 
+            // txtDealerScore
+            // 
+            this.txtDealerScore.AutoSize = true;
+            this.txtDealerScore.Location = new System.Drawing.Point(39, 646);
+            this.txtDealerScore.Name = "txtDealerScore";
+            this.txtDealerScore.Size = new System.Drawing.Size(48, 15);
+            this.txtDealerScore.TabIndex = 4;
+            this.txtDealerScore.Text = "Score: 0";
+            // 
+            // txtCurrentPlayer
+            // 
+            this.txtCurrentPlayer.AutoSize = true;
+            this.txtCurrentPlayer.Location = new System.Drawing.Point(534, 615);
+            this.txtCurrentPlayer.Name = "txtCurrentPlayer";
+            this.txtCurrentPlayer.Size = new System.Drawing.Size(51, 15);
+            this.txtCurrentPlayer.TabIndex = 5;
+            this.txtCurrentPlayer.Text = "Player: 0";
+            // 
+            // txtCurrentPlayerScore
+            // 
+            this.txtCurrentPlayerScore.AutoSize = true;
+            this.txtCurrentPlayerScore.Location = new System.Drawing.Point(534, 646);
+            this.txtCurrentPlayerScore.Name = "txtCurrentPlayerScore";
+            this.txtCurrentPlayerScore.Size = new System.Drawing.Size(48, 15);
+            this.txtCurrentPlayerScore.TabIndex = 6;
+            this.txtCurrentPlayerScore.Text = "Score: 0";
+            // 
+            // txtSelectedPlayerCards
+            // 
+            this.txtSelectedPlayerCards.AutoSize = true;
+            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(534, 280);
+            this.txtSelectedPlayerCards.Name = "txtSelectedPlayerCards";
+            this.txtSelectedPlayerCards.Size = new System.Drawing.Size(122, 15);
+            this.txtSelectedPlayerCards.TabIndex = 7;
+            this.txtSelectedPlayerCards.Text = "Selected players cards";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(966, 613);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(233, 48);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Stand";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(966, 550);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(233, 48);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Hit";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(966, 487);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(233, 48);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "Shuffle";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(966, 424);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(233, 48);
+            this.button4.TabIndex = 11;
+            this.button4.Text = "Next player";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(966, 361);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(233, 48);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "New game";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtSelectedPlayerCards);
+            this.Controls.Add(this.txtCurrentPlayerScore);
+            this.Controls.Add(this.txtCurrentPlayer);
+            this.Controls.Add(this.txtDealerScore);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDealerCards);
+            this.Controls.Add(this.txtAmountOfPlayers);
+            this.Controls.Add(this.txtAmountOfDecks);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label txtAmountOfDecks;
+        private System.Windows.Forms.Label txtAmountOfPlayers;
+        private System.Windows.Forms.Label txtDealerCards;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label txtDealerScore;
+        private System.Windows.Forms.Label txtCurrentPlayer;
+        private System.Windows.Forms.Label txtCurrentPlayerScore;
+        private System.Windows.Forms.Label txtSelectedPlayerCards;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
