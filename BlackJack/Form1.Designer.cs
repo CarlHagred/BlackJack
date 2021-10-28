@@ -142,7 +142,6 @@ namespace BlackJack
             this.button3.TabIndex = 10;
             this.button3.Text = "Shuffle";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -166,7 +165,7 @@ namespace BlackJack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1244, 690);
+            this.ClientSize = new System.Drawing.Size(1240, 687);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);

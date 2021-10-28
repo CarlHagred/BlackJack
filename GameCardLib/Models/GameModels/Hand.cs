@@ -44,7 +44,6 @@ namespace GameCardLib.Models
 
         public void Clear()
         {
-
         }
     }
 }

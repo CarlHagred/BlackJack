@@ -1,12 +1,12 @@
 ﻿using GameCardLib.Models;
 using GameCardLib.Models.Lists;
 using System.Linq;
+using BlackJack;
 
 namespace GameCardLib
 {
-    class Controller
+    public class Controller
     {
-
         public DeckManager<Deck> AmonutOfDecks(int amountOfDecks){
             DeckManager<Deck> deckList = new DeckManager<Deck>();
 
@@ -20,16 +20,12 @@ namespace GameCardLib
             
             for(int i = 0; i < amountOfPlayers; i++)
             {
-                playersList.Add(new Player {
+                /*playersList.Add(new Player {
                     PlayerID = ,
                     Name = ,
                     Hand = ,
-                });
+                });*/
             }
-
-           
-                
-            
             return playersList;
         }
     }   
