@@ -1,37 +1,38 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-
+using GameCardLib;
+using System.Diagnostics;
 
 namespace BlackJack
 {
     public partial class Form1 : Form
     {
-        public event Action NewGameEvent;
-        public event Action ShuffleEvent;
-        public event Func<Dictionary<string, string>> HitEvent;
-        public event Func<int, bool> StandEvent;
-        public event Func<bool> NoPlayerLeftEvent;
-        public event Func<bool> NextPlayerEvent;
-        public event Func<bool> NewRoundEvent;
-
-        Controller  
+        Controller controller = new Controller();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        public void nextplayerclick()
+        private void btnNewGame_Click(object sender, EventArgs e)
         {
-            
-            if (NoPlayerLeftEvent())
+            if (txtAOC.Text.Length != 0 && txtAOP.Text.Length != 0)
             {
-                NewRoundEvent();
-                return;
+                controller.NewGame(Int32.Parse(txtAOP.Text), Int32.Parse(txtAOC.Text));
             }
-
-            NextPlayerEvent();
         }
+
+        private void txtDealerCards_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        /*
+        public uppdateraGUI()
+        {
+            //lyssnar på vilka kort du har på din hand.
+        }*/
     }
 }  

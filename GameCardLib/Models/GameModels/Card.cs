@@ -8,36 +8,33 @@ namespace GameCardLib.Models
 {
     public class Card
     {
-        public Suit suit
+        private Value value;
+        private Suit suit; 
+        public Suit Suit
         {
             get
             {
-                return null;
+                return this.suit;
             }
             set
             {
-                suit = value;
+                this.suit = value;
             }
         }
 
-        public Value value
+        public Value Value
         {
             get
             {
-                return null;
+                return this.value;
             }
             set
             {
-                value = value;
+                this.value = value;
             }
         }
-        public Card(Suit suit, Value value)
+        public Card()
         {
-        }
-
-        public string ToString()
-        {
-
         }
     }
 }

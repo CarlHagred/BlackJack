@@ -5,7 +5,6 @@ namespace GameCardLib.Models
     public enum Value
     {
         Ace,
-        One,
         Two,
         Three,
         Four,

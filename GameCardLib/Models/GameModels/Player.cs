@@ -4,6 +4,9 @@ namespace GameCardLib.Models
 {
     public class Player
     {
+
+        private string name;
+
         public Hand Hand
         {
             get
@@ -36,7 +39,7 @@ namespace GameCardLib.Models
             }
             set
             {
-                Name = value;
+                this.name = value;
             }
         }
 
