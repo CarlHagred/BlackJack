@@ -9,6 +9,22 @@ namespace GameCardLib.Models
     {
         DeckManager<Card> deckList = new DeckManager<Card>();
         private static Random rng = new Random();
+        Dictionary<string, int> cardValues = new Dictionary<string, int>()
+        {
+            {"Two", 2},
+            {"Three", 3},
+            {"Four", 4},
+            {"Five", 5},
+            {"Six", 6},
+            {"Seven" , 7},
+            {"Eight", 8},
+            {"Nine", 9},
+            {"Ten", 10},
+            {"Jack", 10},
+            {"Queen", 10},
+            {"King", 10},
+            {"Ace", 11},
+         };
 
         public bool GameIsDone
         {
@@ -22,14 +38,13 @@ namespace GameCardLib.Models
             }
         }
 
-
         public Deck(int amountOfCards)
         {
-            InitializeDeck(amountOfCards);
-            OnShuffle();
-            Debug.WriteLine(NumberOfCards());
-
-            Debug.WriteLine(SumOfCards());        
+            if(amountOfCards != 0)
+            {
+                InitializeDeck(amountOfCards);
+                OnShuffle();
+            }     
         }
 
         public void DiscardCards()
@@ -58,7 +73,7 @@ namespace GameCardLib.Models
             {
                 for (int suit = 0; suit < 4; suit++)
                 {
-                    for (int value = 0; value < 14; value++)
+                    for (int value = 0; value < 13; value++)
                     {
                         Card card = new Card();
                         card.Value = (Value)value;
@@ -95,11 +110,10 @@ namespace GameCardLib.Models
 
         public int SumOfCards()
         {
-            //Andreas hjälp med matten det blir fel anttal kort och fel summa.
             int sum = 0;
             for (int position = 0; position < NumberOfCards(); position++)
             {
-                sum += (int)deckList.ReturnAt(position).Value + 1;
+                sum += cardValues[deckList.ReturnAt(position).Value.ToString()];
             }
             return sum;
         }
