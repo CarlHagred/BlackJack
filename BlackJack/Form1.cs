@@ -14,7 +14,7 @@ namespace BlackJack
         {
             InitializeComponent();
             controller.selectedPlayerEvent += updatePlayerCards;
-
+            controller.dealerrEvent += updateDealer;
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
@@ -24,20 +24,19 @@ namespace BlackJack
                 controller.NewGame(Int32.Parse(txtAOP.Text), Int32.Parse(txtAOC.Text));
             }
         }
-
-        private void txtDealerCards_Click(object sender, EventArgs e)
-        {
-
-        }
         
         public void updatePlayerCards()
         {
             txtSelectedPlayerCards.Text = controller.GetCurrentPlayerCards();
             txtCurrentPlayer.Text = controller.GetCurrentPlayerName();
             txtCurrentPlayerScore.Text = controller.GetCurrentPlayerScore().ToString();
+        }
 
-            //hämta korten hos den valda spelaren och visa i gui
-            //txtSelectedPlayerCards.text = controller.currentPlayer
+        public void updateDealer()
+        {
+            txtDealerCards.Text = controller.GetDealerCards();
+            txtDealerName.Text = controller.GetDealerName();
+            txtDealerScore.Text = controller.GetDealerScore().ToString();
         }
     }
 }  

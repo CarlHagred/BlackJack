@@ -21,6 +21,9 @@ namespace GameCardLib
         
         PlayerManager<Player> playersList;
         Deck deck;
+        Player dealer;
+        public delegate void DealerDelegate();
+        public event DealerDelegate dealerrEvent;
         public delegate void SelectedPlayerDelegate();
         public event SelectedPlayerDelegate selectedPlayerEvent;
         public int currentPlayerIndex;
@@ -51,9 +54,12 @@ namespace GameCardLib
                 selectedPlayerEvent();
             }
 
-            //sätt dealer som dealer
-
-            //Kalla på dealar eventet
+            list = deck.getTwoCards();
+            dealer = new Player();
+            dealer.Name = "Dealer";
+            dealer.Hand.AddCard(list[0]);
+            dealer.Hand.AddCard(list[1]);
+            dealerrEvent();
         }
 
         public string GetCurrentPlayerCards()
@@ -72,6 +78,21 @@ namespace GameCardLib
         {
             Player player = playersList.ReturnAt(currentPlayerIndex);
             return player.Hand.Score();
+        }
+
+        public string GetDealerCards()
+        {
+            Hand hand = dealer.Hand;
+            return hand.showCards();
+        }
+        public string GetDealerName()
+        {
+            return dealer.Name;
+        }
+
+        public int GetDealerScore()
+        {
+            return dealer.Hand.Score();
         }
 
 

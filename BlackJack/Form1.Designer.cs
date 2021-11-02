@@ -30,7 +30,7 @@ namespace BlackJack
         private void InitializeComponent()
         {
             this.txtDealerCards = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtDealerName = new System.Windows.Forms.Label();
             this.txtDealerScore = new System.Windows.Forms.Label();
             this.txtCurrentPlayer = new System.Windows.Forms.Label();
             this.txtCurrentPlayerScore = new System.Windows.Forms.Label();
@@ -49,21 +49,21 @@ namespace BlackJack
             // txtDealerCards
             // 
             this.txtDealerCards.AutoSize = true;
-            this.txtDealerCards.Location = new System.Drawing.Point(571, 154);
+            this.txtDealerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDealerCards.Location = new System.Drawing.Point(85, 118);
             this.txtDealerCards.Name = "txtDealerCards";
-            this.txtDealerCards.Size = new System.Drawing.Size(70, 15);
+            this.txtDealerCards.Size = new System.Drawing.Size(117, 28);
             this.txtDealerCards.TabIndex = 2;
             this.txtDealerCards.Text = "DealerCards";
-            this.txtDealerCards.Click += new System.EventHandler(this.txtDealerCards_Click);
             // 
-            // label4
+            // txtDealerName
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Dealer";
+            this.txtDealerName.AutoSize = true;
+            this.txtDealerName.Location = new System.Drawing.Point(28, 232);
+            this.txtDealerName.Name = "txtDealerName";
+            this.txtDealerName.Size = new System.Drawing.Size(40, 15);
+            this.txtDealerName.TabIndex = 3;
+            this.txtDealerName.Text = "Dealer";
             // 
             // txtDealerScore
             // 
@@ -95,9 +95,10 @@ namespace BlackJack
             // txtSelectedPlayerCards
             // 
             this.txtSelectedPlayerCards.AutoSize = true;
-            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(539, 397);
+            this.txtSelectedPlayerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(85, 398);
             this.txtSelectedPlayerCards.Name = "txtSelectedPlayerCards";
-            this.txtSelectedPlayerCards.Size = new System.Drawing.Size(122, 15);
+            this.txtSelectedPlayerCards.Size = new System.Drawing.Size(204, 28);
             this.txtSelectedPlayerCards.TabIndex = 7;
             this.txtSelectedPlayerCards.Text = "Selected players cards";
             // 
@@ -187,7 +188,7 @@ namespace BlackJack
             this.Controls.Add(this.txtCurrentPlayerScore);
             this.Controls.Add(this.txtCurrentPlayer);
             this.Controls.Add(this.txtDealerScore);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDealerName);
             this.Controls.Add(this.txtDealerCards);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -199,7 +200,7 @@ namespace BlackJack
 
         #endregion
         private System.Windows.Forms.Label txtDealerCards;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label txtDealerName;
         private System.Windows.Forms.Label txtDealerScore;
         private System.Windows.Forms.Label txtCurrentPlayer;
         private System.Windows.Forms.Label txtCurrentPlayerScore;
