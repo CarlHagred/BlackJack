@@ -6,10 +6,11 @@ namespace GameCardLib.Models
     {
 
         private string name;
-        private bool isFinished;
+        private bool isFinished = false;
         private string playerID;
         private bool winner;
         private Hand hand;
+        private bool lost = false;
 
         public Hand Hand
         {
@@ -20,6 +21,18 @@ namespace GameCardLib.Models
             set
             {
                 hand = value;
+            }
+        }
+
+        public bool Lost
+        {
+            get
+            {
+                return this.lost;
+            }
+            set
+            {
+                this.lost = value;
             }
         }
 

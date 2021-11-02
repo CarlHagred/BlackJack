@@ -35,14 +35,14 @@ namespace BlackJack
             this.txtCurrentPlayer = new System.Windows.Forms.Label();
             this.txtCurrentPlayerScore = new System.Windows.Forms.Label();
             this.txtSelectedPlayerCards = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnStand = new System.Windows.Forms.Button();
+            this.btnHit = new System.Windows.Forms.Button();
             this.btnShuffle = new System.Windows.Forms.Button();
             this.btnNextPlayer = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
-            this.txtAOC = new System.Windows.Forms.TextBox();
-            this.txtAOP = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cbAOP = new System.Windows.Forms.ComboBox();
+            this.cbAOD = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,23 +102,25 @@ namespace BlackJack
             this.txtSelectedPlayerCards.TabIndex = 7;
             this.txtSelectedPlayerCards.Text = "Selected players cards";
             // 
-            // button1
+            // btnStand
             // 
-            this.button1.Location = new System.Drawing.Point(720, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 48);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Stand";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnStand.Location = new System.Drawing.Point(720, 3);
+            this.btnStand.Name = "btnStand";
+            this.btnStand.Size = new System.Drawing.Size(233, 48);
+            this.btnStand.TabIndex = 8;
+            this.btnStand.Text = "Stand";
+            this.btnStand.UseVisualStyleBackColor = true;
+            this.btnStand.Click += new System.EventHandler(this.btnStand_Click);
             // 
-            // button2
+            // btnHit
             // 
-            this.button2.Location = new System.Drawing.Point(481, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(233, 48);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Hit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnHit.Location = new System.Drawing.Point(481, 3);
+            this.btnHit.Name = "btnHit";
+            this.btnHit.Size = new System.Drawing.Size(233, 48);
+            this.btnHit.TabIndex = 9;
+            this.btnHit.Text = "Hit";
+            this.btnHit.UseVisualStyleBackColor = true;
+            this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnShuffle
             // 
@@ -150,41 +152,46 @@ namespace BlackJack
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.btnNewGame_Click);
             // 
-            // txtAOC
-            // 
-            this.txtAOC.Location = new System.Drawing.Point(976, 12);
-            this.txtAOC.Name = "txtAOC";
-            this.txtAOC.PlaceholderText = "Amount of cards";
-            this.txtAOC.Size = new System.Drawing.Size(110, 23);
-            this.txtAOC.TabIndex = 13;
-            // 
-            // txtAOP
-            // 
-            this.txtAOP.Location = new System.Drawing.Point(850, 12);
-            this.txtAOP.Name = "txtAOP";
-            this.txtAOP.PlaceholderText = "Amount of players";
-            this.txtAOP.Size = new System.Drawing.Size(110, 23);
-            this.txtAOP.TabIndex = 14;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btnNextPlayer);
             this.flowLayoutPanel1.Controls.Add(this.btnShuffle);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.btnHit);
+            this.flowLayoutPanel1.Controls.Add(this.btnStand);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(130, 624);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(956, 51);
             this.flowLayoutPanel1.TabIndex = 15;
+            // 
+            // cbAOP
+            // 
+            this.cbAOP.FormattingEnabled = true;
+            this.cbAOP.Location = new System.Drawing.Point(802, 12);
+            this.cbAOP.Name = "cbAOP";
+            this.cbAOP.Size = new System.Drawing.Size(132, 23);
+            this.cbAOP.TabIndex = 16;
+            this.cbAOP.Text = "Amount of players";
+            this.cbAOP.SelectionChangeCommitted += new System.EventHandler(this.cbAOP_SelectionChangeCommitted);
+            // 
+            // cbAOD
+            // 
+            this.cbAOD.DisplayMember = "1";
+            this.cbAOD.FormattingEnabled = true;
+            this.cbAOD.Location = new System.Drawing.Point(954, 12);
+            this.cbAOD.Name = "cbAOD";
+            this.cbAOD.Size = new System.Drawing.Size(132, 23);
+            this.cbAOD.TabIndex = 17;
+            this.cbAOD.Text = "Amount of decks";
+            this.cbAOD.ValueMember = "1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 687);
+            this.Controls.Add(this.cbAOD);
+            this.Controls.Add(this.cbAOP);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.txtAOP);
-            this.Controls.Add(this.txtAOC);
             this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.txtSelectedPlayerCards);
             this.Controls.Add(this.txtCurrentPlayerScore);
@@ -207,14 +214,14 @@ namespace BlackJack
         private System.Windows.Forms.Label txtCurrentPlayer;
         private System.Windows.Forms.Label txtCurrentPlayerScore;
         private System.Windows.Forms.Label txtSelectedPlayerCards;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStand;
+        private System.Windows.Forms.Button btnHit;
         private System.Windows.Forms.Button btnShuffle;
         private System.Windows.Forms.Button btnNextPlayer;
         private System.Windows.Forms.Button btnNewGame;
-        private System.Windows.Forms.TextBox txtAOC;
-        private System.Windows.Forms.TextBox txtAOP;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.ComboBox cbAOP;
+        private System.Windows.Forms.ComboBox cbAOD;
     }
 }
 

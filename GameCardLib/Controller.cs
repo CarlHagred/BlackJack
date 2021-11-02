@@ -9,16 +9,6 @@ namespace GameCardLib
 {
     public class Controller
     {
-        /*
-        public event Action NewGameEvent;
-        public event Action ShuffleEvent;
-        public event Func<Dictionary<string, string>> HitEvent;
-        public event Func<int, bool> StandEvent;
-        public event Func<bool> NoPlayerLeftEvent;
-        public event Func<bool> NextPlayerEvent;
-        public event Func<bool> NewRoundEvent;
-        */
-        
         PlayerManager<Player> playersList;
         Deck deck;
         Player dealer;
@@ -26,9 +16,10 @@ namespace GameCardLib
         public event DealerDelegate dealerrEvent;
         public delegate void SelectedPlayerDelegate();
         public event SelectedPlayerDelegate selectedPlayerEvent;
+        public delegate void VictoryDelegate();
+        public event VictoryDelegate victoryEvent;
         public int currentPlayerIndex;
-
-        //När man trycker next så kollar programet om alla spelare har fler kort än dealern om det är fallet är det dealerns tur att göra ett drag och current player sätts till den första
+        public int finishedPlayrs = 0;
 
         public void NewGame(int amountOfPlayers, int amountOfCards)
         {
@@ -68,6 +59,7 @@ namespace GameCardLib
             Hand hand = player.Hand;
             return hand.showCards();
         }
+
         public string GetCurrentPlayerName()
         {
             Player player = playersList.ReturnAt(currentPlayerIndex);
@@ -78,6 +70,11 @@ namespace GameCardLib
         {
             Player player = playersList.ReturnAt(currentPlayerIndex);
             return player.Hand.Score();
+        }
+
+        public bool GetPlayerDoneStatus()
+        {
+            return playersList.ReturnAt(currentPlayerIndex).IsFinished;
         }
 
         public string GetDealerCards()
@@ -97,40 +94,66 @@ namespace GameCardLib
 
         public void NextPlayer()
         {
-            if (currentPlayerIndex + 1 < playersList.Count)
+            if(finishedPlayrs != playersList.Count)
             {
-                currentPlayerIndex++;
-
-                if (selectedPlayerEvent != null)
+                if (currentPlayerIndex + 1 < playersList.Count)
                 {
+
+                    currentPlayerIndex++;
+
+                    if (selectedPlayerEvent != null)
+                    {
+                        selectedPlayerEvent();
+                    }
+                }
+                else
+                {
+
+                    currentPlayerIndex = 0;
                     selectedPlayerEvent();
                 }
-            }
-            else
+            }else if (dealer.Hand.Score() < 16)
             {
-                //här ska dealern få sitt nya kort och sen ska current player sättas till 0
-                if(dealer.Hand.Score() < 16)
+                dealer.Hand.AddCard(deck.GetAt(0));
+                dealerrEvent();
+                if(dealer.Hand.Score() > 16)
                 {
-                    dealer.Hand.AddCard(deck.GetAt(0));
-
-                    dealerrEvent();
+                    victoryEvent();
                 }
-                currentPlayerIndex = 0;
-                selectedPlayerEvent();
+            } else
+            {
+                victoryEvent();
             }
         }
 
-        public void DrawCard(){
-            playersList.ReturnAt(currentPlayerIndex).Hand.AddCard(deck.GetAt(0));
-            //Behöver få value och suit från enum
-            //Kortet ska läggas till i spelarens hand
-            //Kortet behöver tas bort från deck
+        public List<string> GetWinners()
+        {
+            List<string> winners = new List<string>();
+            for(int playerIndex = 0; playerIndex < playersList.Count; playerIndex++)
+            {
+                if(playersList.ReturnAt(playerIndex).Hand.Score() > dealer.Hand.Score() && !playersList.ReturnAt(playerIndex).Lost)
+                {
+                    winners.Add(playersList.ReturnAt(playerIndex).Name);
+                }
+            }
+            return winners;
         }
 
-        public void Stand(Player player, Hand hand){
-            //om spelaren > 21 ska han DÖ
-            //Jämföra poäng med dealern
-            //Korten tillbaka till deck??
+        public void DrawCard()
+        {
+            playersList.ReturnAt(currentPlayerIndex).Hand.AddCard(deck.GetAt(0));
+            if(playersList.ReturnAt(currentPlayerIndex).Hand.Score() > 21)
+            {
+                playersList.ReturnAt(currentPlayerIndex).Lost = true;
+                playersList.ReturnAt(currentPlayerIndex).IsFinished = true;
+                finishedPlayrs++;
+            }
+            selectedPlayerEvent();
+        }
+
+        public void Stand(){
+            playersList.ReturnAt(currentPlayerIndex).IsFinished = true;
+            finishedPlayrs += 1;
         }
 
         public void ShuffleDeck(){
