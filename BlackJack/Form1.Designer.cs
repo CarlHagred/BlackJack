@@ -38,7 +38,7 @@ namespace BlackJack
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnNextPlayer = new System.Windows.Forms.Button();
             this.btnNewGame = new System.Windows.Forms.Button();
             this.txtAOC = new System.Windows.Forms.TextBox();
             this.txtAOP = new System.Windows.Forms.TextBox();
@@ -129,14 +129,15 @@ namespace BlackJack
             this.button3.Text = "Shuffle";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnNextPlayer
             // 
-            this.button4.Location = new System.Drawing.Point(3, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(233, 48);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Next player";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnNextPlayer.Location = new System.Drawing.Point(3, 3);
+            this.btnNextPlayer.Name = "btnNextPlayer";
+            this.btnNextPlayer.Size = new System.Drawing.Size(233, 48);
+            this.btnNextPlayer.TabIndex = 11;
+            this.btnNextPlayer.Text = "Next player";
+            this.btnNextPlayer.UseVisualStyleBackColor = true;
+            this.btnNextPlayer.Click += new System.EventHandler(this.btnNextPlayer_Click);
             // 
             // btnNewGame
             // 
@@ -166,7 +167,7 @@ namespace BlackJack
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.btnNextPlayer);
             this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button1);
@@ -208,7 +209,7 @@ namespace BlackJack
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnNextPlayer;
         private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.TextBox txtAOC;
         private System.Windows.Forms.TextBox txtAOP;

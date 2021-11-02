@@ -38,5 +38,10 @@ namespace BlackJack
             txtDealerName.Text = controller.GetDealerName();
             txtDealerScore.Text = controller.GetDealerScore().ToString();
         }
+
+        private void btnNextPlayer_Click(object sender, EventArgs e)
+        {
+            controller.NextPlayer();
+        }
     }
 }  

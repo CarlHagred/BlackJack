@@ -41,7 +41,7 @@ namespace GameCardLib
             {
                 list = deck.getTwoCards();
                 Player player = new Player();
-                player.Name = "Player: " + i.ToString();
+                player.Name = "Player: " + (i + 1).ToString();
                 player.Hand.AddCard(list[0]);
                 player.Hand.AddCard(list[1]);
                 playersList.Add(player);
@@ -95,19 +95,18 @@ namespace GameCardLib
             return dealer.Hand.Score();
         }
 
-
-        /*
-        public Card DrawCardToHand(CardHand hand)
+        public void NextPlayer()
         {
-            int sumOfCards = 0;
-            Card drawn = listOfCards[listOfCards.Count - 1];
-            hand.AddCardValues(drawn, sumOfCards);
-            listOfCards.Remove(drawn);
-            hand.Cards.Add(drawn);
-            //Debug.WriteLine(drawn.Value);
-            return drawn;
+            if(currentPlayerIndex + 1 < playersList.Count)
+            {
+                currentPlayerIndex++;
+
+                if (selectedPlayerEvent != null)
+                {
+                    selectedPlayerEvent();
+                }
+            }
         }
-        */
 
         public void DrawCard(){
             //Behöver få value och suit från enum
