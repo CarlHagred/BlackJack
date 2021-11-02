@@ -43,5 +43,10 @@ namespace BlackJack
         {
             controller.NextPlayer();
         }
+
+        private void btnShuffle_Click(object sender, EventArgs e)
+        {
+            controller.ShuffleDeck();
+        }
     }
 }  

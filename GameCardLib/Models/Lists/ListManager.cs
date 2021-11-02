@@ -65,8 +65,6 @@ namespace GameCardLib.Models.Lists
             try
             {
                 _list = new List<T>();
-
-               // _list.RemoveAll(item => item != null);
             }
             catch (Exception e)
             {

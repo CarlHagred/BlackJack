@@ -97,7 +97,7 @@ namespace GameCardLib
 
         public void NextPlayer()
         {
-            if(currentPlayerIndex + 1 < playersList.Count)
+            if (currentPlayerIndex + 1 < playersList.Count)
             {
                 currentPlayerIndex++;
 
@@ -106,14 +106,25 @@ namespace GameCardLib
                     selectedPlayerEvent();
                 }
             }
+            else
+            {
+                //här ska dealern få sitt nya kort och sen ska current player sättas till 0
+                if(dealer.Hand.Score() < 16)
+                {
+                    dealer.Hand.AddCard(deck.GetAt(0));
+
+                    dealerrEvent();
+                }
+                currentPlayerIndex = 0;
+                selectedPlayerEvent();
+            }
         }
 
         public void DrawCard(){
+            playersList.ReturnAt(currentPlayerIndex).Hand.AddCard(deck.GetAt(0));
             //Behöver få value och suit från enum
             //Kortet ska läggas till i spelarens hand
             //Kortet behöver tas bort från deck
-
-           
         }
 
         public void Stand(Player player, Hand hand){
@@ -122,8 +133,8 @@ namespace GameCardLib
             //Korten tillbaka till deck??
         }
 
-        public void ShuffleDeck(Deck deck){
-            
+        public void ShuffleDeck(){
+            deck.OnShuffle();
         }
     }
 }
