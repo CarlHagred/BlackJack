@@ -59,11 +59,17 @@ namespace GameCardLib.Models
             return card;
         }
 
+        public Card DisplayAt(int position)
+        {
+            Card card = deckList.ReturnAt(position);
+            return card;
+        }
+
         public List<Card> getTwoCards()
         {
             List<Card> list = new List<Card>();
-            list.Add(GetAt(deckList.Count + 1));
-            list.Add(GetAt(deckList.Count + 1));
+            list.Add(GetAt(deckList.Count - 1));
+            list.Add(GetAt(deckList.Count - 1));
             return list;
         }
 
@@ -101,6 +107,11 @@ namespace GameCardLib.Models
                 deckList.Replace(position,deckList.ReturnAt(cardsLeft));
                 deckList.Replace(cardsLeft, value);
             }
+        }
+
+        public void addCard(Card card)
+        {
+            deckList.Add(card);
         }
 
         public void removeCard(int pos)

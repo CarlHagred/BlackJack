@@ -6,16 +6,20 @@ namespace GameCardLib.Models
     {
 
         private string name;
+        private bool isFinished;
+        private string playerID;
+        private bool winner;
+        private Hand hand;
 
         public Hand Hand
         {
             get
             {
-                return Hand;
+                return hand;
             }
             set
             {
-                Hand = value;
+                hand = value;
             }
         }
 
@@ -23,11 +27,11 @@ namespace GameCardLib.Models
         {
             get
             {
-                return IsFinished;
+                return this.isFinished;
             }
             set
             {
-                IsFinished = value;
+                this.isFinished = value;
             }
         }
 
@@ -35,7 +39,7 @@ namespace GameCardLib.Models
         {
             get
             {
-                return Name;
+                return this.name;
             }
             set
             {
@@ -47,11 +51,11 @@ namespace GameCardLib.Models
         {
             get
             {
-                return PlayerID;
+                return playerID;
             }
             set
             {
-                PlayerID = value;
+                playerID = value;
             }
         }
 
@@ -59,25 +63,17 @@ namespace GameCardLib.Models
         {
             get
             {
-                return Winner;
+                return winner;
             }
             set
             {
-                Winner = value;
+                winner = value;
             }
-        }
-        public Player(string id, string name, Hand hand)
-        {
-
         }
 
         public Player()
         {
-        }
-
-        public string ToString()
-        {
-            return null;
+            hand = new Hand();
         }
     }
 }

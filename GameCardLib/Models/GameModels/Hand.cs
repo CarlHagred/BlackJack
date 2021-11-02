@@ -9,41 +9,53 @@ namespace GameCardLib.Models
     public class Hand
     {
         private Deck deck;
+        string playerCards;
 
-        public Card LastCard
+        public string showCards() 
         {
-            get
+            string cardString = "";
+            String seperator = ", ";
+            for (int current = 0; current < deck.NumberOfCards(); current++)
             {
-                return null;
+                if(current == 0)
+                {
+                    cardString += (deck.DisplayAt(current).Value + " of "  + deck.DisplayAt(current).Suit);
+                    
+                } else
+                {
+                    cardString += (", " + deck.DisplayAt(current).Value + " of " + deck.DisplayAt(current).Suit);
+                }
             }
+
+            return cardString;
         }
 
         public int NumberOfCards
         {
             get
             {
-                return 0;
+                return deck.NumberOfCards();
             }
         }
 
-        public int Score
+        public int Score()
         {
-            get
-            {
-                return 0;
-            }
+            return deck.SumOfCards();
         }
-        public Hand(Deck deck)
+
+        public Hand()
         {
+            this.deck = new Deck(0);
         }
 
         public void AddCard(Card card)
         {
-
+            this.deck.addCard(card);
         }
 
         public void Clear()
         {
+            this.deck.DiscardCards();
         }
     }
 }
