@@ -4,11 +4,15 @@ using System.Linq;
 using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using UtilitiesLib.DB;
 
 namespace GameCardLib
 {
     public class Controller
     {
+        GameDbContext gameDbContext = new GameDbContext();
+        Round round;
+        PlayerRound playerRound;
         PlayerManager<Player> playersList;
         Deck deck;
         Player dealer;
@@ -20,7 +24,8 @@ namespace GameCardLib
         public event VictoryDelegate victoryEvent;
         public int currentPlayerIndex;
         public int finishedPlayrs = 0;
-        public int highestScore = 0; 
+        public int highestScore = 0;
+        public int gameId = 0;
 
         public void NewGame(int amountOfPlayers, int amountOfCards)
         {
@@ -135,19 +140,33 @@ namespace GameCardLib
             for(int playerIndex = 0; playerIndex < playersList.Count; playerIndex++)
             {
                 int curentScore = playersList.ReturnAt(playerIndex).Hand.Score();
+                SavePlayerRound(playersList.ReturnAt(playerIndex));
                 if ((curentScore > dealer.Hand.Score() || dealer.Lost) && !playersList.ReturnAt(playerIndex).Lost)
                 {
                     if (curentScore >= highestScore) highestScore = curentScore;
-
                     winners.Add(playersList.ReturnAt(playerIndex).Name);
                 }
             }
+
             if(winners.Count == 0 && dealer.Hand.Score() <= 21)
             {
                 winners.Add("Dealer");
             }
             Debug.WriteLine("Highscore: " + highestScore);
+
+            
+
             return winners;
+        }
+
+        public void SavePlayerRound(Player player)
+        {
+            playerRound = new PlayerRound();
+            playerRound.gameID = this.gameId;
+            playerRound.score = player.Hand.Score();
+            playerRound.playerName = player.Name;
+            gameDbContext.Add(playerRound);
+            gameDbContext.SaveChanges();
         }
 
         public void DrawCard()
