@@ -25,6 +25,7 @@ namespace BlackJack
         {
             if (cbAOP.SelectedItem != null && cbAOD.SelectedItem != null)
             {
+                btnNextPlayer.Enabled = true;
                 controller.NewGame(Int32.Parse(cbAOP.SelectedItem.ToString()), Int32.Parse(cbAOD.SelectedItem.ToString()));
             }
         }

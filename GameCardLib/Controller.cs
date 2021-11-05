@@ -20,12 +20,14 @@ namespace GameCardLib
         public event VictoryDelegate victoryEvent;
         public int currentPlayerIndex;
         public int finishedPlayrs = 0;
+        public int highestScore = 0; 
 
         public void NewGame(int amountOfPlayers, int amountOfCards)
         {
             playersList = new PlayerManager<Player>();
             deck = new Deck(amountOfCards);
             List<Card> list;
+            highestScore = 0;
 
             playersList = new PlayerManager<Player>();
             for (int i=0; i < amountOfPlayers; i++)
@@ -135,6 +137,10 @@ namespace GameCardLib
                 {
                     winners.Add(playersList.ReturnAt(playerIndex).Name);
                 }
+            }
+            if(winners.Count == 0 && dealer.Hand.Score() <= 21)
+            {
+                winners.Add("Dealer");
             }
             return winners;
         }
