@@ -130,11 +130,15 @@ namespace GameCardLib
 
         public List<string> GetWinners()
         {
+            if (dealer.Hand.Score() > 21) dealer.Lost = true;
             List<string> winners = new List<string>();
             for(int playerIndex = 0; playerIndex < playersList.Count; playerIndex++)
             {
-                if(playersList.ReturnAt(playerIndex).Hand.Score() > dealer.Hand.Score() && !playersList.ReturnAt(playerIndex).Lost)
+                int curentScore = playersList.ReturnAt(playerIndex).Hand.Score();
+                if ((curentScore > dealer.Hand.Score() || dealer.Lost) && !playersList.ReturnAt(playerIndex).Lost)
                 {
+                    if (curentScore >= highestScore) highestScore = curentScore;
+
                     winners.Add(playersList.ReturnAt(playerIndex).Name);
                 }
             }
@@ -142,6 +146,7 @@ namespace GameCardLib
             {
                 winners.Add("Dealer");
             }
+            Debug.WriteLine("Highscore: " + highestScore);
             return winners;
         }
 
