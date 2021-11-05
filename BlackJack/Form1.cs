@@ -2,13 +2,14 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using GameCardLib;
-using System.Diagnostics;
 using System.Linq;
+using UtilitiesLib.DB;
 
 namespace BlackJack
 {
     public partial class Form1 : Form
     {
+        GameDbContext gameDbContext = new GameDbContext();
         Controller controller = new Controller();
 
         public Form1()

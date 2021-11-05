@@ -14,7 +14,6 @@ namespace GameCardLib.Models
         public string showCards() 
         {
             string cardString = "";
-            String seperator = ", ";
             for (int current = 0; current < deck.NumberOfCards(); current++)
             {
                 if(current == 0)
