@@ -43,14 +43,24 @@ namespace BlackJack
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cbAOP = new System.Windows.Forms.ComboBox();
             this.cbAOD = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.GameId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AOP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HighestScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PlayerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Score = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDealerCards
             // 
             this.txtDealerCards.AutoSize = true;
             this.txtDealerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDealerCards.Location = new System.Drawing.Point(85, 118);
+            this.txtDealerCards.Location = new System.Drawing.Point(85, 283);
             this.txtDealerCards.Name = "txtDealerCards";
             this.txtDealerCards.Size = new System.Drawing.Size(117, 28);
             this.txtDealerCards.TabIndex = 2;
@@ -59,7 +69,7 @@ namespace BlackJack
             // txtDealerName
             // 
             this.txtDealerName.AutoSize = true;
-            this.txtDealerName.Location = new System.Drawing.Point(28, 232);
+            this.txtDealerName.Location = new System.Drawing.Point(28, 377);
             this.txtDealerName.Name = "txtDealerName";
             this.txtDealerName.Size = new System.Drawing.Size(40, 15);
             this.txtDealerName.TabIndex = 3;
@@ -68,7 +78,7 @@ namespace BlackJack
             // txtDealerScore
             // 
             this.txtDealerScore.AutoSize = true;
-            this.txtDealerScore.Location = new System.Drawing.Point(85, 232);
+            this.txtDealerScore.Location = new System.Drawing.Point(85, 377);
             this.txtDealerScore.Name = "txtDealerScore";
             this.txtDealerScore.Size = new System.Drawing.Size(48, 15);
             this.txtDealerScore.TabIndex = 4;
@@ -96,7 +106,7 @@ namespace BlackJack
             // 
             this.txtSelectedPlayerCards.AutoSize = true;
             this.txtSelectedPlayerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(85, 398);
+            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(85, 469);
             this.txtSelectedPlayerCards.Name = "txtSelectedPlayerCards";
             this.txtSelectedPlayerCards.Size = new System.Drawing.Size(204, 28);
             this.txtSelectedPlayerCards.TabIndex = 7;
@@ -184,11 +194,69 @@ namespace BlackJack
             this.cbAOD.Text = "Amount of decks";
             this.cbAOD.ValueMember = "1";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.GameId,
+            this.AOP,
+            this.HighestScore});
+            this.dataGridView1.Location = new System.Drawing.Point(28, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(338, 173);
+            this.dataGridView1.TabIndex = 18;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PlayerName,
+            this.Score,
+            this.dataGridViewTextBoxColumn1});
+            this.dataGridView2.Location = new System.Drawing.Point(400, 12);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 25;
+            this.dataGridView2.Size = new System.Drawing.Size(342, 173);
+            this.dataGridView2.TabIndex = 19;
+            // 
+            // GameId
+            // 
+            this.GameId.HeaderText = "GameId";
+            this.GameId.Name = "GameId";
+            // 
+            // AOP
+            // 
+            this.AOP.HeaderText = "AOP";
+            this.AOP.Name = "AOP";
+            // 
+            // HighestScore
+            // 
+            this.HighestScore.HeaderText = "HighestScore";
+            this.HighestScore.Name = "HighestScore";
+            // 
+            // PlayerName
+            // 
+            this.PlayerName.HeaderText = "PlayerName";
+            this.PlayerName.Name = "PlayerName";
+            // 
+            // Score
+            // 
+            this.Score.HeaderText = "Score";
+            this.Score.Name = "Score";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "GameId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 687);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbAOD);
             this.Controls.Add(this.cbAOP);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -202,6 +270,8 @@ namespace BlackJack
             this.Name = "Form1";
             this.Text = "Form1";
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,6 +292,14 @@ namespace BlackJack
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ComboBox cbAOP;
         private System.Windows.Forms.ComboBox cbAOD;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GameId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AOP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HighestScore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PlayerName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Score;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
 
