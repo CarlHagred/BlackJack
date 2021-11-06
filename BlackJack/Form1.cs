@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameCardLib;
 using System.Linq;
 using UtilitiesLib.DB;
+using System.ComponentModel;
 
 namespace BlackJack
 {
@@ -19,6 +20,7 @@ namespace BlackJack
             controller.selectedPlayerEvent += updatePlayerCards;
             controller.dealerrEvent += updateDealer;
             controller.victoryEvent += PresentWinners;
+            controller.dbInfoEvent += UpdateScoreBoards;
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
@@ -36,6 +38,16 @@ namespace BlackJack
             MessageBox.Show("The winners are: " + winners);
             DisableButtons();
             btnNextPlayer.Enabled = false;
+        }
+
+        public void UpdateScoreBoards()
+        {
+            var bindingList = new BindingList<Round>(controller.RoundList);
+            var source = new BindingSource(bindingList, null);
+            RoundDG.DataSource = source;
+            var bindingList2 = new BindingList<PlayerRound>(controller.PlayerRoundList);
+            var source2 = new BindingSource(bindingList2, null);
+            PlayerRoundDG.DataSource = source2;
         }
 
         public void updatePlayerCards()

@@ -22,13 +22,21 @@ namespace GameCardLib
         public event SelectedPlayerDelegate selectedPlayerEvent;
         public delegate void VictoryDelegate();
         public event VictoryDelegate victoryEvent;
+        public delegate void DbInfoDelegate();
+        public event DbInfoDelegate dbInfoEvent;
         public int currentPlayerIndex;
         public int finishedPlayrs = 0;
         public int highestScore = 0;
-        public int gameId = 0;
+        public int gameId = 1;
+        public int aop = 0;
+        List<Round> roundList;
+        List<PlayerRound> playerRoundList;
 
         public void NewGame(int amountOfPlayers, int amountOfCards)
         {
+            RetriveDb();
+            dbInfoEvent();
+            aop = amountOfPlayers;
             playersList = new PlayerManager<Player>();
             deck = new Deck(amountOfCards);
             List<Card> list;
@@ -59,6 +67,24 @@ namespace GameCardLib
             dealer.Hand.AddCard(list[1]);
             dealerrEvent();
         }
+
+        public void RetriveDb()
+        {
+            using (var context = new GameDbContext())
+            {
+                roundList = context.Rounds.ToList();
+                playerRoundList = context.PlayerRounds.ToList();
+
+                foreach (var round in roundList)
+                {
+                    if (round.gameID >= this.gameId) this.gameId = (round.gameID + 1);
+                }
+            }
+        }
+
+        public List<Round> RoundList { get { return roundList; } }
+
+        public List<PlayerRound> PlayerRoundList { get { return playerRoundList; } }
 
         public string GetCurrentPlayerCards()
         {
@@ -154,7 +180,7 @@ namespace GameCardLib
             }
             Debug.WriteLine("Highscore: " + highestScore);
 
-            
+            SaveRound();
 
             return winners;
         }
@@ -166,6 +192,16 @@ namespace GameCardLib
             playerRound.score = player.Hand.Score();
             playerRound.playerName = player.Name;
             gameDbContext.Add(playerRound);
+            gameDbContext.SaveChanges();
+        }
+
+        public void SaveRound()
+        {
+            round = new Round();
+            round.gameID = this.gameId;
+            round.amountOfPlayers = this.aop;
+            round.highestScore = this.highestScore;
+            gameDbContext.Add(round);
             gameDbContext.SaveChanges();
         }
 
