@@ -34,8 +34,6 @@ namespace GameCardLib
 
         public void NewGame(int amountOfPlayers, int amountOfCards)
         {
-            RetriveDb();
-            dbInfoEvent();
             aop = amountOfPlayers;
             playersList = new PlayerManager<Player>();
             deck = new Deck(amountOfCards);
@@ -80,6 +78,27 @@ namespace GameCardLib
                     if (round.gameID >= this.gameId) this.gameId = (round.gameID + 1);
                 }
             }
+            dbInfoEvent();
+        }
+
+        public void ChangeRound(int Id, int AOP, int HighestScore)
+        {
+            var round = gameDbContext.Rounds.First(r => r.Id == Id);
+            round.amountOfPlayers = AOP;
+            round.highestScore = HighestScore;
+            gameDbContext.Update(round);
+            gameDbContext.SaveChanges();
+            dbInfoEvent();
+        }
+
+        public void ChangePlayerRound(int Id, string PlayerName, int Score)
+        {
+            var playerRound = gameDbContext.PlayerRounds.First(pr => pr.Id == Id);
+            playerRound.playerName = PlayerName;
+            playerRound.score = Score;
+            gameDbContext.Update(playerRound);
+            gameDbContext.SaveChanges();
+            dbInfoEvent();
         }
 
         public List<Round> RoundList { get { return roundList; } }
@@ -181,7 +200,7 @@ namespace GameCardLib
             Debug.WriteLine("Highscore: " + highestScore);
 
             SaveRound();
-
+            RetriveDb();
             return winners;
         }
 

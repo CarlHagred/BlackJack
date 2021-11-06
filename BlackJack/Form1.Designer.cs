@@ -54,7 +54,7 @@ namespace BlackJack
             // 
             this.txtDealerCards.AutoSize = true;
             this.txtDealerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDealerCards.Location = new System.Drawing.Point(85, 283);
+            this.txtDealerCards.Location = new System.Drawing.Point(133, 287);
             this.txtDealerCards.Name = "txtDealerCards";
             this.txtDealerCards.Size = new System.Drawing.Size(117, 28);
             this.txtDealerCards.TabIndex = 2;
@@ -63,7 +63,7 @@ namespace BlackJack
             // txtDealerName
             // 
             this.txtDealerName.AutoSize = true;
-            this.txtDealerName.Location = new System.Drawing.Point(28, 377);
+            this.txtDealerName.Location = new System.Drawing.Point(56, 377);
             this.txtDealerName.Name = "txtDealerName";
             this.txtDealerName.Size = new System.Drawing.Size(40, 15);
             this.txtDealerName.TabIndex = 3;
@@ -72,7 +72,7 @@ namespace BlackJack
             // txtDealerScore
             // 
             this.txtDealerScore.AutoSize = true;
-            this.txtDealerScore.Location = new System.Drawing.Point(85, 377);
+            this.txtDealerScore.Location = new System.Drawing.Point(102, 377);
             this.txtDealerScore.Name = "txtDealerScore";
             this.txtDealerScore.Size = new System.Drawing.Size(48, 15);
             this.txtDealerScore.TabIndex = 4;
@@ -81,7 +81,7 @@ namespace BlackJack
             // txtCurrentPlayer
             // 
             this.txtCurrentPlayer.AutoSize = true;
-            this.txtCurrentPlayer.Location = new System.Drawing.Point(28, 542);
+            this.txtCurrentPlayer.Location = new System.Drawing.Point(56, 542);
             this.txtCurrentPlayer.Name = "txtCurrentPlayer";
             this.txtCurrentPlayer.Size = new System.Drawing.Size(51, 15);
             this.txtCurrentPlayer.TabIndex = 5;
@@ -90,7 +90,7 @@ namespace BlackJack
             // txtCurrentPlayerScore
             // 
             this.txtCurrentPlayerScore.AutoSize = true;
-            this.txtCurrentPlayerScore.Location = new System.Drawing.Point(85, 542);
+            this.txtCurrentPlayerScore.Location = new System.Drawing.Point(113, 542);
             this.txtCurrentPlayerScore.Name = "txtCurrentPlayerScore";
             this.txtCurrentPlayerScore.Size = new System.Drawing.Size(48, 15);
             this.txtCurrentPlayerScore.TabIndex = 6;
@@ -100,7 +100,7 @@ namespace BlackJack
             // 
             this.txtSelectedPlayerCards.AutoSize = true;
             this.txtSelectedPlayerCards.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(85, 469);
+            this.txtSelectedPlayerCards.Location = new System.Drawing.Point(130, 468);
             this.txtSelectedPlayerCards.Name = "txtSelectedPlayerCards";
             this.txtSelectedPlayerCards.Size = new System.Drawing.Size(204, 28);
             this.txtSelectedPlayerCards.TabIndex = 7;
@@ -148,9 +148,9 @@ namespace BlackJack
             // 
             // btnNewGame
             // 
-            this.btnNewGame.Location = new System.Drawing.Point(1156, 11);
+            this.btnNewGame.Location = new System.Drawing.Point(1069, 153);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(72, 23);
+            this.btnNewGame.Size = new System.Drawing.Size(139, 23);
             this.btnNewGame.TabIndex = 12;
             this.btnNewGame.Text = "New game";
             this.btnNewGame.UseVisualStyleBackColor = true;
@@ -170,9 +170,9 @@ namespace BlackJack
             // cbAOP
             // 
             this.cbAOP.FormattingEnabled = true;
-            this.cbAOP.Location = new System.Drawing.Point(909, 11);
+            this.cbAOP.Location = new System.Drawing.Point(1069, 12);
             this.cbAOP.Name = "cbAOP";
-            this.cbAOP.Size = new System.Drawing.Size(120, 23);
+            this.cbAOP.Size = new System.Drawing.Size(139, 23);
             this.cbAOP.TabIndex = 16;
             this.cbAOP.Text = "Amount of players";
             this.cbAOP.SelectionChangeCommitted += new System.EventHandler(this.cbAOP_SelectionChangeCommitted);
@@ -181,9 +181,9 @@ namespace BlackJack
             // 
             this.cbAOD.DisplayMember = "1";
             this.cbAOD.FormattingEnabled = true;
-            this.cbAOD.Location = new System.Drawing.Point(1035, 11);
+            this.cbAOD.Location = new System.Drawing.Point(1069, 79);
             this.cbAOD.Name = "cbAOD";
-            this.cbAOD.Size = new System.Drawing.Size(115, 23);
+            this.cbAOD.Size = new System.Drawing.Size(139, 23);
             this.cbAOD.TabIndex = 17;
             this.cbAOD.Text = "Amount of decks";
             this.cbAOD.ValueMember = "1";
@@ -191,26 +191,28 @@ namespace BlackJack
             // RoundDG
             // 
             this.RoundDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.RoundDG.Location = new System.Drawing.Point(12, 12);
+            this.RoundDG.Location = new System.Drawing.Point(56, 12);
             this.RoundDG.Name = "RoundDG";
             this.RoundDG.RowTemplate.Height = 25;
             this.RoundDG.Size = new System.Drawing.Size(433, 173);
             this.RoundDG.TabIndex = 18;
+            this.RoundDG.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoundDG_CellEndEdit);
             // 
             // PlayerRoundDG
             // 
             this.PlayerRoundDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PlayerRoundDG.Location = new System.Drawing.Point(451, 12);
+            this.PlayerRoundDG.Location = new System.Drawing.Point(553, 12);
             this.PlayerRoundDG.Name = "PlayerRoundDG";
             this.PlayerRoundDG.RowTemplate.Height = 25;
-            this.PlayerRoundDG.Size = new System.Drawing.Size(408, 173);
+            this.PlayerRoundDG.Size = new System.Drawing.Size(448, 173);
             this.PlayerRoundDG.TabIndex = 19;
+            this.PlayerRoundDG.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerRoundDG_CellEndEdit);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 687);
+            this.ClientSize = new System.Drawing.Size(1240, 694);
             this.Controls.Add(this.PlayerRoundDG);
             this.Controls.Add(this.RoundDG);
             this.Controls.Add(this.cbAOD);

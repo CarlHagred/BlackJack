@@ -21,6 +21,7 @@ namespace BlackJack
             controller.dealerrEvent += updateDealer;
             controller.victoryEvent += PresentWinners;
             controller.dbInfoEvent += UpdateScoreBoards;
+            controller.RetriveDb();
         }
 
         private void btnNewGame_Click(object sender, EventArgs e)
@@ -104,6 +105,20 @@ namespace BlackJack
             {
                 cbAOD.Items.AddRange(Enumerable.Range((Int32.Parse(cbAOP.SelectedItem.ToString()) + 5), 100).Select(i => (object)i).ToArray());
             }
+        }
+
+        private void RoundDG_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = RoundDG.CurrentRow.Index;
+            DataGridViewRow row = (DataGridViewRow)RoundDG.Rows[index];
+            controller.ChangeRound(Int32.Parse(row.Cells[0].Value.ToString()), Int32.Parse(row.Cells[2].Value.ToString()), Int32.Parse(row.Cells[3].Value.ToString()));
+        }
+
+        private void PlayerRoundDG_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = PlayerRoundDG.CurrentRow.Index;
+            DataGridViewRow row = (DataGridViewRow)PlayerRoundDG.Rows[index];
+            controller.ChangePlayerRound(Int32.Parse(row.Cells[0].Value.ToString()), row.Cells[1].Value.ToString(), Int32.Parse(row.Cells[2].Value.ToString()));
         }
     }
 }  
